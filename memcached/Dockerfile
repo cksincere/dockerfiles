@@ -4,6 +4,7 @@
 FROM khipu/base-ubuntu:latest
 MAINTAINER developers@khipu.com
 
+RUN apt-get update
 RUN apt-get install memcached -y
 
 USER daemon
