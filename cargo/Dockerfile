@@ -16,6 +16,8 @@ USER cargo
 
 WORKDIR /home/cargo
 
+RUN apt-get install -y curl
+
 RUN curl http://repo1.maven.org/maven2/org/codehaus/cargo/cargo-daemon-webapp/1.4.10/cargo-daemon-webapp-1.4.10.war -o "cargo-daemon-webapp-1.4.10.war"
 
 VOLUME ["/home/cargo", "/home/payment/logs"]
