@@ -4,6 +4,7 @@
 FROM khipu/java7
 MAINTAINER developers@khipu.com
 
+RUN apt-get update
 RUN apt-get install -y curl
 
 RUN useradd -m -d /home/cargo -s /bin/bash -U cargo
