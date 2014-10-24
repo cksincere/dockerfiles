@@ -25,4 +25,6 @@ EXPOSE 8080 9990
 
 USER wildfly
 
+ENV LAUNCH_JBOSS_IN_BACKGROUND 1
+
 CMD ["/opt/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
