@@ -10,8 +10,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN groupadd -r wildfly && \
-    useradd -r -g wildfly -d /opt/wildfly -s /sbin/nologin -c "WildFly user" wildfly
+RUN groupadd -r -g 2000 wildfly && \
+    useradd -r -u 2000 -g wildfly -d /opt/wildfly -s /sbin/nologin -c "WildFly user" wildfly
 
 RUN mkdir /opt/wildfly-$WILDFLY_VERSION
 
