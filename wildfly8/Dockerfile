@@ -1,7 +1,7 @@
 FROM khipu/java7:latest
 MAINTAINER developers@khipu.com
 
-ENV WILDFLY_VERSION 8.1.0.Final
+ENV WILDFLY_VERSION 8.2.0.Final
 ENV JBOSS_HOME /opt/wildfly
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
