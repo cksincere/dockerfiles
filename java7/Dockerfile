@@ -1,4 +1,4 @@
-FROM khipu/base-ubuntu:latest
+FROM khipu/base-apps:latest
 MAINTAINER developers@khipu.com
 
 RUN export DEBIAN_FRONTEND=noninteractive && \

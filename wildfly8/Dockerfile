@@ -4,12 +4,6 @@ MAINTAINER developers@khipu.com
 ENV WILDFLY_VERSION 8.2.0.Final
 ENV JBOSS_HOME /opt/wildfly
 
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get update && \
-    apt-get install curl -y && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 RUN groupadd -r -g 2000 wildfly && \
     useradd -r -u 2000 -g wildfly -d /opt/wildfly -s /sbin/nologin -c "WildFly user" wildfly
 
