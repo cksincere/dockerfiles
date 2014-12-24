@@ -1,4 +1,4 @@
-FROM khipu/java7:latest
+FROM khipu/java8:latest
 MAINTAINER developers@khipu.com
 
 ENV WILDFLY_VERSION 8.2.0.Final
