@@ -6,7 +6,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 && \
     apt-get update && \
     echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-    apt-get install oracle-java7-installer oracle-java7-set-default -y
+    apt-get install ca-certificates-java oracle-java7-installer oracle-java7-set-default -y && \
+    dpkg-reconfigure oracle-java7-installer  # creates link to /etc/ssl/certs/java/cacerts
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
