@@ -3,7 +3,7 @@ MAINTAINER developers@khipu.com
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
-    apt-get install ntop -y && \
+    apt-get install libjs-jquery-ui libjs-jquery ntop -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
