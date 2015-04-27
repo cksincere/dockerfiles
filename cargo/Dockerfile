@@ -7,18 +7,16 @@ MAINTAINER developers@khipu.com
 RUN apt-get update
 RUN apt-get install -y curl
 
-RUN useradd -m -d /home/cargo -s /bin/bash -U cargo
+RUN groupadd -r -g 2001 cargo && \
+    useradd -r -u 2001 -g cargo -d /home/cargo -s /sbin/nologin -c "Cargo user" cargo
 
-RUN mkdir -p /home/payment/logs
-
-RUN touch /home/payment/logs/empty.txt
-
-RUN chown -R cargo /home/payment/logs
+RUN mkdir -p /home/payment/logs && \
+    touch /home/payment/logs/empty.txt && \
+    chown -R cargo /home/payment/logs
 
 USER cargo
 
 WORKDIR /home/cargo
-
 
 RUN curl http://repo1.maven.org/maven2/org/codehaus/cargo/cargo-daemon-webapp/1.4.10/cargo-daemon-webapp-1.4.10.war -o "cargo-daemon-webapp-1.4.10.war"
 
