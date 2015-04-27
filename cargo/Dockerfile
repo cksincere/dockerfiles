@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get install -y curl
 
 RUN groupadd -r -g 2001 cargo && \
-    useradd -r -u 2001 -g cargo -d /home/cargo -s /sbin/nologin -c "Cargo user" cargo
+    useradd -m -r -u 2001 -g cargo -d /home/cargo -s /sbin/nologin -c "Cargo user" cargo
 
 RUN mkdir -p /home/payment/logs && \
     touch /home/payment/logs/empty.txt && \
