@@ -4,8 +4,8 @@ MAINTAINER developers@khipu.com
 ENV WILDFLY_VERSION 8.2.0.Final
 ENV JBOSS_HOME /opt/wildfly
 
-RUN groupadd -r -g 2000 wildfly && \
-    useradd -r -u 2000 -g wildfly -d /opt/wildfly -s /sbin/nologin -c "WildFly user" wildfly
+RUN groupadd -r -g 2100 wildfly && \
+    useradd -r -u 2100 -g wildfly -d /opt/wildfly -s /sbin/nologin -c "WildFly user" wildfly
 
 RUN mkdir /opt/wildfly-$WILDFLY_VERSION
 
