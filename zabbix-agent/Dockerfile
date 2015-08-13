@@ -6,7 +6,7 @@ RUN echo 'America/Santiago' > /etc/timezone \
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
-    && apt-get install -y curl unzip wget \
+    && apt-get install -y curl unzip wget jq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -33,6 +33,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && patch -p0 < ../zabbix-2.4.0-run_foreground.patch \
     && ./configure --disable-server --disable-proxy --disable-java --enable-agent \
     && make install \
+    && mkdir -p /etc/zabbix /etc/zabbix/zabbix_agentd.conf.d
     && apt-get purge -y --auto-remove gcc make patch \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

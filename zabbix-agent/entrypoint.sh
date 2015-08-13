@@ -11,4 +11,4 @@ export ZABBIX_HOSTNAME=$3
 
 confd -onetime -backend etcd -node "$ETCD_NODE"  -prefix="/khipu/$KHENV/" -confdir /etc/confd || exit 1
 
-exec gosu khipu zabbix_agentd -f -c /etc/zabbix_agentd.conf
+exec gosu khipu zabbix_agentd -f -c /etc/zabbix/zabbix_agentd.conf
