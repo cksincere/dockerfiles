@@ -1,0 +1,18 @@
+PidFile=/tmp/zabbix_agentd.pid
+LogFile=/tmp/zabbix_agentd.log
+LogFileSize=10
+DebugLevel=3
+Server={{getv "/zabbix/servers"}}
+ListenPort=10050
+StartAgents=5
+ServerActive={{getv "/zabbix/servers"}}
+Hostname={{getenv "ZABBIX_HOSTNAME"}}
+HostMetadata={{getenv "/zabbix/agents/metadata"}}
+RefreshActiveChecks=120
+BufferSend=5
+BufferSize=100
+
+# Include=/usr/local/etc/zabbix_agentd.userparams.conf
+# Include=/usr/local/etc/zabbix_agentd.conf.d/
+# Include=/usr/local/etc/zabbix_agentd.conf.d/*.conf
+
