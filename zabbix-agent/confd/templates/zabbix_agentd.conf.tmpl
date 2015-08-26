@@ -1,6 +1,6 @@
-PidFile=/tmp/zabbix_agentd.pid
-LogFile=/tmp/zabbix_agentd.log
-LogFileSize=10
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=1
 DebugLevel=3
 Server={{getv "/zabbix/server/passive"}}
 ListenPort=10050
