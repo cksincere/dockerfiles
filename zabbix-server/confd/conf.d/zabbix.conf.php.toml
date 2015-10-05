@@ -1,0 +1,9 @@
+[template]
+src = "zabbix.conf.php.tmpl"
+dest = "/usr/share/webapps/zabbix/conf/zabbix.conf.php"
+keys = [
+    "/zabbix/server/db/address",
+    "/zabbix/server/db/name",
+    "/zabbix/server/db/user",
+    "/zabbix/server/db/passwd",
+]
