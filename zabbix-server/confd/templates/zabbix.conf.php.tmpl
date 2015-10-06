@@ -4,7 +4,7 @@ global $DB;
 
 $DB['TYPE']     = 'POSTGRESQL';
 $DB['SERVER']   = '{{getv "/zabbix/server/db/address"}}';
-$DB['PORT']     = '0';
+$DB['PORT']     = '{{getv "/zabbix/server/db/port"}}';
 $DB['DATABASE'] = '{{getv "/zabbix/server/db/name"}}';
 $DB['USER']     = '{{getv "/zabbix/server/db/user"}}';
 $DB['PASSWORD'] = '{{getv "/zabbix/server/db/passwd"}}';

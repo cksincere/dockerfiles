@@ -1,6 +1,6 @@
 [template]
-src = "zabbix.conf.php.tmpl"
-dest = "/usr/share/webapps/zabbix/conf/zabbix.conf.php"
+src = "zabbix_server.conf.tmpl"
+dest = "/etc/zabbix/zabbix_server.conf"
 keys = [
     "/zabbix/server/db/address",
     "/zabbix/server/db/port",
