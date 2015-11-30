@@ -1,7 +1,7 @@
 FROM khipu/base-ubuntu:latest
 MAINTAINER developers@khipu.com
 
-ARG ETCD_VERSION=2.2.2
+ENV ETCD_VERSION=2.2.2
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
