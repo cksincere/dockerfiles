@@ -5,9 +5,11 @@
 # see https://github.com/docker/docker/issues/8231
 ulimit -n 1024
 
-AH=""
-if [ ! -z "$ALTERNATIVE_HOSTNAME" ]; then
-    AH="ldap://$ALTERNATIVE_HOSTNAME ldaps://$ALTERNATIVE_HOSTNAME"
+HN=""
+if [ ! -z "$LDAP_HOSTNAME" ]; then
+    HN="ldap://$LDAP_HOSTNAME ldaps://$LDAP_HOSTNAME"
+else
+    HN="ldap://$HOSTNAME ldaps://$HOSTNAME"
 fi
 
-exec /usr/sbin/slapd -h "$AH ldap://$HOSTNAME ldaps://$HOSTNAME ldap://localhost ldaps://localhost ldapi:///" -u openldap -g openldap -d $LDAP_LOG_LEVEL
+exec /usr/sbin/slapd -h "$HN ldap://localhost ldaps://localhost ldapi:///" -u openldap -g openldap -d $LDAP_LOG_LEVEL
