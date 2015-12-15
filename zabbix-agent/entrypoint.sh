@@ -9,6 +9,11 @@ KHENV=$1
 ETCD_NODE=$2
 export ZABBIX_HOSTNAME=$3
 
-confd -onetime -backend etcd -node "$ETCD_NODE"  -prefix="/khipu/$KHENV/" -confdir /etc/confd || exit 1
+if [ -f /etc/etcd/certs/client.pem ] && [ -f /etc/etcd/certs/client-key.pem ] && [ -f /etc/etcd/certs/ca.pem ]; then
+    confd -onetime -backend etcd -node https://"$ETCD_NODE" -scheme https -client-cert /etc/etcd/certs/client.pem \
+          -client-key /etc/etcd/certs/client-key.pem  -prefix="/khipu/$KHENV/" -confdir /etc/confd || exit 1
+else
+    confd -onetime -backend etcd -node http://"$ETCD_NODE" -prefix="/khipu/$KHENV/" -confdir /etc/confd || exit 1
+fi
 
 exec /init
