@@ -1,7 +1,9 @@
 FROM khipu/base-server-s6
 MAINTAINER developers@khipu.com
 
-RUN apk add --update zabbix-agent=2.4.6-r1 jq \
+RUN addgroup -g 2000 -S zabbix \
+    && adduser -u 2000 -G zabbix -S zabbix \
+    && apk add --update zabbix-agent=2.4.6-r1 jq \
     && rm -rf /var/cache/apk/* \
     && mkdir /etc/zabbix/zabbix_agentd.conf.d
 
