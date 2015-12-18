@@ -1,8 +1,9 @@
 FROM khipu/base-server-s6
 MAINTAINER developers@khipu.com
 
-RUN apk add --update zabbix-pgsql=2.4.6-r1 zabbix-webif=2.4.6-r1 zabbix-utils=2.4.6-r1 nginx php-fpm php-ldap jq \
-    && rm -rf /var/cache/apk/*
+RUN apk add --update zabbix-pgsql=2.4.6-r1 zabbix-webif=2.4.6-r1 zabbix-utils=2.4.6-r1 nginx php-fpm php-ldap jq bash fping \
+    && rm -rf /var/cache/apk/* \
+    && chmod -R 755 /var/lib/nginx
 
 ADD zabbix-server.sh /etc/services.d/zabbix-server/run
 ADD nginx.sh /etc/services.d/nginx/run

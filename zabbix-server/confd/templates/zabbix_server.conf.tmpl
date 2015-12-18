@@ -36,7 +36,7 @@ LogFile=/var/log/zabbix/zabbix_server.log
 # Mandatory: no
 # Range: 0-1024
 # Default:
-# LogFileSize=1
+LogFileSize=1
 
 ### Option: DebugLevel
 #	Specifies debug level
@@ -321,7 +321,7 @@ DBPort={{getv "/zabbix/server/db/port"}}
 # Mandatory: no
 # Range: 128K-8G
 # Default:
-# CacheSize=8M
+CacheSize=128M
 
 ### Option: CacheUpdateFrequency
 #	How often Zabbix will perform update of configuration cache, in seconds.
@@ -422,7 +422,7 @@ DBPort={{getv "/zabbix/server/db/port"}}
 #
 # Mandatory: no
 # Default:
-# AlertScriptsPath=${datadir}/zabbix/alertscripts
+AlertScriptsPath=/etc/zabbix/alert.d/
 
 ### Option: ExternalScripts
 #	Full path to location of external scripts.
@@ -430,7 +430,7 @@ DBPort={{getv "/zabbix/server/db/port"}}
 #
 # Mandatory: no
 # Default:
-# ExternalScripts=${datadir}/zabbix/externalscripts
+ExternalScripts=/etc/zabbix/scripts/
 
 ### Option: FpingLocation
 #	Location of fping.
