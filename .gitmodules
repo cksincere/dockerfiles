@@ -1,3 +1,0 @@
-[submodule "base-alpine-s6"]
-	path = base-alpine-s6
-	url = https://github.com/just-containers/base-alpine.git
