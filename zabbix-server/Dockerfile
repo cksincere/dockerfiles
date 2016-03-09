@@ -6,7 +6,9 @@ RUN apk add --update zabbix-pgsql=2.4.6-r1 zabbix-webif=2.4.6-r1 zabbix-utils=2.
     && echo "America/Santiago" > /etc/timezone \
     && apk del tzdata \
     && rm -rf /var/cache/apk/* \
-    && chmod -R 755 /var/lib/nginx
+    && chmod -R 755 /var/lib/nginx \
+    && mkdir /run/nginx/ \
+    && sed -i 's/date.timezone = UTC/date.timezone = America\/Santiago/g' /etc/php/php.ini
 
 ADD zabbix-server.sh /etc/services.d/zabbix-server/run
 ADD nginx.sh /etc/services.d/nginx/run
