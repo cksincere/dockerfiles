@@ -13,8 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && groupmod -g 2001 jenkins \
     && usermod -u 2001 -g 2001 jenkins \
-    && groupadd -r -g 2003 docker \
-    && useradd -r -u 2003 -g 2003 -s /sbin/nologin docker \
-    && gpasswd -a jenkins docker
+    && groupadd -r -g 2000 khipu \
+    && gpasswd -a jenkins khipu
 
 USER jenkins
