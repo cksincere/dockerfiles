@@ -11,7 +11,7 @@ ARG ETCD_GID=2002
 
 ADD developers@khipu.com-55de074c.rsa.pub /etc/apk/keys/
 RUN echo "https://s3.amazonaws.com/alpine.khipu.com/packages/main" >> /etc/apk/repositories \
-    && apk add --update curl tzdata \
+    && apk add --update curl tzdata bash \
     && rm -rf /var/cache/apk/*
 
 RUN cp /usr/share/zoneinfo/America/Santiago /etc/localtime \
