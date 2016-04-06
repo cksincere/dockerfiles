@@ -1,0 +1,14 @@
+scripts = jvm.bsh, zabbix.bsh, zabbix-agent.bsh
+
+zabbix.listen.port = 10060
+zabbix.server.addr = {{getv "/zabbix/server/passive"}}
+zabbix.active = true
+zabbix.active.server.addr = {{getv "/zabbix/server/active"}}
+zabbix.active.host_metadata = {{getenv "PROJECT_NAME"}} {{getenv "PROJECT_VERSION"}} {{getv "/zabbix/agents/metadata"}}
+
+zorka.hostname = {{getenv "HOSTNAME"}}
+zorka.mbs.autoregister = true
+tracer = no
+zorka.spy.compute.frames = yes
+
+zorka.log.level = INFO

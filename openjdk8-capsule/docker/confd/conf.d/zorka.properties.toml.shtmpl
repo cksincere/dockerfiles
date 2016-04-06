@@ -1,0 +1,8 @@
+[template]
+src = "zorka.properties.tmpl"
+dest = "${KHIPU_HOME}/var/${PROJECT_NAME}/zorka/zorka.properties"
+keys = [
+    "/zabbix/server/active",
+    "/zabbix/server/passive",
+    "/zabbix/agents/metadata",
+]
