@@ -1,4 +1,4 @@
-FROM khipu/base-server-s6
+FROM khipu/base-alpine-s6
 MAINTAINER developers@khipu.com
 
 RUN addgroup -g 2000 -S zabbix \
