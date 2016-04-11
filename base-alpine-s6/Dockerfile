@@ -1,5 +1,5 @@
 # based on https://github.com/just-containers/base-alpine.git
-FROM khipu/base-alpine
+FROM khipu/base-alpine:edge
 MAINTAINER developers@khipu.com
 
 ARG S6O_VERSION=1.17.2.0
