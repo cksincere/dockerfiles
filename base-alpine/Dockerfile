@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:edge
 MAINTAINER developers@khipu.com
 
 ARG CONFD_VERSION=0.11.0
