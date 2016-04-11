@@ -1,7 +1,7 @@
 FROM khipu/base-alpine-s6:edge
 MAINTAINER developers@khipu.com
 
-RUN apk add --update zabbix-pgsql=3.0.1-r0 zabbix-webif=3.0.1-r0 zabbix-utils=3.0.1-r0 nginx php-fpm php-ldap jq bash fping tzdata \
+RUN apk add --update zabbix-pgsql=3.0.1-r0 zabbix-webif=3.0.1-r0 zabbix-utils=3.0.1-r0 nginx php-fpm php-ldap php-pgsql jq bash fping tzdata \
     && cp /usr/share/zoneinfo/America/Santiago /etc/localtime \
     && echo "America/Santiago" > /etc/timezone \
     && apk del tzdata \
