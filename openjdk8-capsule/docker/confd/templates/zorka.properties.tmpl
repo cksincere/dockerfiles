@@ -4,7 +4,7 @@ zabbix.listen.port = 10060
 zabbix.server.addr = {{getv "/zabbix/server/passive"}}
 zabbix.active = {{getv "/zabbix/agent/active"}}
 zabbix.active.server.addr = {{getv "/zabbix/server/active"}}
-zabbix.active.host_metadata = {{getenv "PROJECT_NAME"}} {{getenv "PROJECT_VERSION"}} {{getv "/zabbix/agents/metadata"}}
+zabbix.active.host_metadata = {{getenv "PROJECT_NAME"}} {{getenv "PROJECT_VERSION"}} {{getv "/zabbix/agent/metadata"}}
 
 zorka.hostname = {{getenv "HOSTNAME"}}
 zorka.mbs.autoregister = true
