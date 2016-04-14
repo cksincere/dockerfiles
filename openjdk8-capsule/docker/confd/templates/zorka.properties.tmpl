@@ -2,7 +2,7 @@ scripts = jvm.bsh, zabbix.bsh, zabbix-agent.bsh
 
 zabbix.listen.port = 10060
 zabbix.server.addr = {{getv "/zabbix/server/passive"}}
-zabbix.active = true
+zabbix.active = {{getv "/zabbix/agent/active"}}
 zabbix.active.server.addr = {{getv "/zabbix/server/active"}}
 zabbix.active.host_metadata = {{getenv "PROJECT_NAME"}} {{getenv "PROJECT_VERSION"}} {{getv "/zabbix/agents/metadata"}}
 
