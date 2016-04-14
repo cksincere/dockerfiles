@@ -3,11 +3,12 @@
 : ${KHIPU_ENV:?"must be set"}
 : ${ETCD_PEERS:?"must be set"}
 : ${KHIPU_HOME:?"must be set"}
-: ${DOCKER_GID:?"must be set"}
 
-if [ ! $(getent group docker) ]; then
-  addgroup -g $DOCKER_GID -S docker
-  adduser khipu docker
+if [ -n "$DOCKER_GID" ]; then
+    if [ ! $(getent group docker) ]; then
+        addgroup -g $DOCKER_GID -S docker
+        adduser khipu docker
+    fi
 fi
 
 CERTDIR=/etc/etcd/certs
