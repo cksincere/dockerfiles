@@ -15,6 +15,11 @@ ONBUILD LABEL version=${PROJECT_VERSION}
 RUN apk -U add openjdk8 \
     && rm -rf /var/cache/apk/*
 
+# jvm fixes
+RUN curl -sSL https://s3.amazonaws.com/downloads.khipu.com/jvm/tzdata2016d/tzdb.dat -o /usr/lib/jvm/java-1.8-openjdk/jre/lib/tzdb.dat \
+  && sed -i 's/.*networkaddress.cache.ttl=.*/networkaddress.cache.ttl=5/g' /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/java.security \
+  && sed -i 's/.*networkaddress.cache.negative.ttl=.*/networkaddress.cache.negative.ttl=5/g' /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/java.security
+
 COPY entrypoint.sh /
 COPY docker/confd ${KHIPU_HOME}/etc/confd
 COPY docker/zorka/scripts ${KHIPU_HOME}/var/${PROJECT_NAME}/zorka/scripts
