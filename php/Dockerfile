@@ -14,4 +14,5 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install -j$(nproc) mysql
 
-RUN chown -R www-data /var/log/apache2
+RUN find /var -uid 33 | xargs chown -R www-data:www-data
+RUN find /run -uid 33 | xargs chown -R www-data:www-data
