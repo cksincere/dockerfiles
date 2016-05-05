@@ -3,7 +3,7 @@ MAINTAINER developers@khipu.com
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
-  apt-get -y install supervisor apache2 libapache2-mod-php5 php5-mysql pwgen php-apc php5-mcrypt php5-gd && \
+  apt-get -y install supervisor apache2 libapache2-mod-php5 php5-mysql pwgen php-apc php5-mcrypt php5-gd vim && \
   echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Add image configuration and scripts
