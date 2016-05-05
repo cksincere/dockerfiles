@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:trusty
 MAINTAINER developers@khipu.com
 
 ENV DEBIAN_FRONTEND noninteractive
