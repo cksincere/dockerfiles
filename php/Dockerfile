@@ -13,6 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && \
   apt-get -y install supervisor apache2 libapache2-mod-php5 php5-curl php5-mysql pwgen php-apc php5-mcrypt php5-gd vim && \
   apt-get clean && \
+  php5enmod mcrypt && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add image configuration and scripts
