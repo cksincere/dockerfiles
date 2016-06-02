@@ -1,0 +1,7 @@
+[template]
+src = "redis.conf.tmpl"
+dest = "/data/redis.conf"
+owner = "khipu"
+keys = [
+     "/config/"
+]

@@ -1,0 +1,15 @@
+{{ if exists "/config/master-group-name"}}
+
+protected-mode no
+sentinel monitor {{ getv "/config/master-group-name" }} {{ getv "/config/monitor" }}
+{{ range gets "/config/var/*" }}
+sentinel {{base .Key}} {{ getv "/config/master-group-name" }} {{.Value}}
+{{ end }}
+
+{{ else }}
+
+{{ range gets "/config/*" }}
+{{base .Key}} {{.Value}}
+{{ end }}
+
+{{ end }}
