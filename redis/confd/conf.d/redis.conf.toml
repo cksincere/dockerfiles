@@ -1,6 +1,6 @@
 [template]
 src = "redis.conf.tmpl"
-dest = "/data/redis.conf"
+dest = "/etc/redis.conf"
 owner = "khipu"
 keys = [
      "/config/"

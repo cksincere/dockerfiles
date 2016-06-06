@@ -24,7 +24,7 @@ esac
 
 shift
 
-if [ ! -f /data/redis.conf ]; then
+if [ ! -f /etc/redis.conf ]; then
     CERTDIR=/etc/etcd/certs
     PREFIX="/khipu/${KHIPU_ENV}/redis/${MODE}/"
 
@@ -33,14 +33,14 @@ if [ ! -f /data/redis.conf ]; then
     else
         confd -log-level debug -onetime -backend etcd -node http://${ETCD_PEERS} -prefix=${PREFIX}
     fi
-    chown khipu:khipu /data/redis.conf
+    chown khipu:khipu /etc/redis.conf
 fi
 
 case "$MODE" in
     master|slave)
-        exec su-exec khipu redis-server /data/redis.conf "$@"
+        exec su-exec khipu redis-server /etc/redis.conf "$@"
         ;;
     sentinel)
-        exec su-exec khipu redis-server /data/redis.conf --sentinel "$@"
+        exec su-exec khipu redis-server /etc/redis.conf --sentinel "$@"
         ;;
 esac
