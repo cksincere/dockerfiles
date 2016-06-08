@@ -1,25 +1,23 @@
-FROM alpine:3.3
+FROM alpine:3.4
 MAINTAINER developers@khipu.com
 
 ARG CONFD_VERSION=0.11.0
-ARG ETCD_VERSION=2.2.5
-ARG GOSU_VERSION=1.7
+ARG ETCD_VERSION=2.3.6
+ARG GOSU_VERSION=1.9
 ARG KHIPU_GID=2000
 ARG KHIPU_UID=2000
 ARG ETCD_UID=2002
 ARG ETCD_GID=2002
 
 ADD developers@khipu.com-55de074c.rsa.pub /etc/apk/keys/
-RUN echo "https://s3.amazonaws.com/alpine.khipu.com/packages/main" >> /etc/apk/repositories \
-    && apk add --update curl tzdata bash gettext \
+
+RUN echo "https://s3.amazonaws.com/alpine.khipu.com/3.4/main" >> /etc/apk/repositories \
+    && apk add --update curl bash gettext su-exec \
     && rm -rf /var/cache/apk/*
 
-RUN cp /usr/share/zoneinfo/America/Santiago /etc/localtime \
-    && echo "America/Santiago" > /etc/timezone \
-    && addgroup -g ${ETCD_GID} -S etcd \
-    && adduser -u ${ETCD_UID} -G etcd -S etcd \
-    && addgroup -g ${KHIPU_GID} -S khipu \
-    && adduser -u ${KHIPU_UID} -G khipu -G etcd -S khipu \
+RUN adduser -u ${ETCD_UID} -D -H etcd \
+    && adduser -u ${KHIPU_UID} -D -H khipu \
+    && adduser khipu etcd \
     && mkdir -p /opt/khipu \
     && cd /opt/khipu \
     && mkdir bin etc share log var \
