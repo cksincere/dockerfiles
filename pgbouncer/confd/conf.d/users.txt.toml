@@ -1,0 +1,7 @@
+[template]
+src = "users.txt.tmpl"
+dest = "/etc/pgbouncer/users.txt"
+keys = [
+     "/database/auth/md5/pgbouncer",
+]
+reload_cmd = "s6-svc -h /var/run/s6/services/pgbouncer"

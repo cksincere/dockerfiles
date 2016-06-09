@@ -1,0 +1,7 @@
+[template]
+src = "hba.conf.tmpl"
+dest = "/etc/pgbouncer/hba.conf"
+keys = [
+     "/pgbouncer/hba/",
+]
+reload_cmd = "s6-svc -h /var/run/s6/services/pgbouncer"

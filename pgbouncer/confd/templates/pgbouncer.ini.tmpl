@@ -1,0 +1,13 @@
+[databases]
+{{ range gets "/pgbouncer/databases/*" }}
+{{ base .Key }} = {{ .Value }}
+{{ end }}
+
+[pgbouncer]
+{{ range gets "/pgbouncer/cfg/*" }}
+{{ base .Key }} = {{ .Value }}
+{{ end }}
+
+auth_hba_file = /etc/pgbouncer/hba.conf
+auth_file = /etc/pgbouncer/users.txt
+auth_user = "pgbouncer"
