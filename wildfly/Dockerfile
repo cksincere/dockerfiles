@@ -1,15 +1,13 @@
 FROM khipu/base-alpine
 MAINTAINER developers@khipu.com
 
-ENV JAVA_VERSION 8u77
-ENV JAVA_ALPINE_VERSION 8.92.14-r0
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 
 ENV WILDFLY_VERSION 10.0.0.Final
 ENV WILDFLY_SHA1 c0dd7552c5207b0d116a9c25eb94d10b4f375549
 ENV JBOSS_HOME /opt/wildfly
 
-RUN apk add --no-cache openjdk8=${JAVA_ALPINE_VERSION}
+RUN apk add --no-cache openjdk8
 
 # jvm fixes
 RUN curl -sSL https://s3.amazonaws.com/downloads.khipu.com/jvm/tzdata2016d/tzdb.dat -o /usr/lib/jvm/java-1.8-openjdk/jre/lib/tzdb.dat \
@@ -27,4 +25,4 @@ ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
 EXPOSE 8080 9990
 
-ENTRYPOINT ["gosu", "khipu", "/opt/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
+ENTRYPOINT ["su-exec", "khipu", "/opt/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
