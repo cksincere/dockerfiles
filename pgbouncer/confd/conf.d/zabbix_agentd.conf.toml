@@ -1,0 +1,9 @@
+[template]
+src = "zabbix_agentd.conf.tmpl"
+dest = "/etc/zabbix/zabbix_agentd.conf"
+keys = [
+    "/zabbix/server/passive",
+    "/zabbix/server/active",
+    "/zabbix/agents/metadata",
+]
+reload_cmd = "s6-svc -t /var/run/s6/services/zabbix_agentd"
