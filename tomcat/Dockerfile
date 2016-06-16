@@ -20,7 +20,7 @@ RUN curl -O -sSL https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$T
   && tar xzf apache-tomcat-$TOMCAT_VERSION.tar.gz \
   && mv apache-tomcat-$TOMCAT_VERSION $TOMCAT_HOME \
   && rm apache-tomcat-$TOMCAT_VERSION.tar.gz \
-  && rm -rf $TOMCAT_HOME\webapps\* \
+  && rm -rf $TOMCAT_HOME/webapps/* \
   && chown -R khipu:khipu $TOMCAT_HOME
 
 ENTRYPOINT ["su-exec", "khipu", "/opt/tomcat/bin/catalina.sh", "run"]
