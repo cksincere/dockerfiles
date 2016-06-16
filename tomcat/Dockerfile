@@ -15,12 +15,12 @@ RUN curl -sSL https://s3.amazonaws.com/downloads.khipu.com/jvm/tzdata2016d/tzdb.
   && sed -i 's/.*networkaddress.cache.ttl=.*/networkaddress.cache.ttl=5/g' /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/java.security \
   && sed -i 's/.*networkaddress.cache.negative.ttl=.*/networkaddress.cache.negative.ttl=5/g' /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/java.security
 
-RUN curl -O -sSL https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz \
-    && sha1sum apache-tomcat-$TOMCAT_VERSION.tar.gz | grep $TOMCAT_SHA1 \
-    && tar xzf apache-tomcat-$TOMCAT_VERSION.tar.gz \
-    && mv apache-tomcat-$TOMCAT_VERSION.tar.gz $TOMCAT_HOME \
-    && rm apache-tomcat-$TOMCAT_VERSION.tar.gz \
-    && rm -rf $TOMCAT_HOME\webapps\* \
-    && chown -R khipu:khipu $TOMCAT_HOME
+RUN curl -O -sSL https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz 
+RUN     sha1sum apache-tomcat-$TOMCAT_VERSION.tar.gz | grep $TOMCAT_SHA1 
+RUN     tar xzf apache-tomcat-$TOMCAT_VERSION.tar.gz 
+RUN     mv apache-tomcat-$TOMCAT_VERSION.tar.gz $TOMCAT_HOME 
+RUN     rm apache-tomcat-$TOMCAT_VERSION.tar.gz 
+RUN     rm -rf $TOMCAT_HOME\webapps\* 
+RUN     chown -R khipu:khipu $TOMCAT_HOME
 
 ENTRYPOINT ["su-exec", "khipu", "/opt/tomcat/bin/catalina.sh", "run"]
