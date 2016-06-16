@@ -18,7 +18,7 @@ RUN curl -sSL https://s3.amazonaws.com/downloads.khipu.com/jvm/tzdata2016d/tzdb.
 RUN curl -O -sSL https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz 
 RUN     sha1sum apache-tomcat-$TOMCAT_VERSION.tar.gz | grep $TOMCAT_SHA1 
 RUN     tar xzf apache-tomcat-$TOMCAT_VERSION.tar.gz 
-RUN     mv apache-tomcat-$TOMCAT_VERSION.tar.gz $TOMCAT_HOME 
+RUN     mv apache-tomcat-$TOMCAT_VERSION $TOMCAT_HOME 
 RUN     rm apache-tomcat-$TOMCAT_VERSION.tar.gz 
 RUN     rm -rf $TOMCAT_HOME\webapps\* 
 RUN     chown -R khipu:khipu $TOMCAT_HOME
