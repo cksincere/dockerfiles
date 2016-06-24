@@ -1,0 +1,11 @@
+<source>
+	@type tail
+	path /opt/khipu/log/payment/*.log
+	pos_file /opt/khipu/log/fluentd/payment.log.pos
+	tag payment
+	format none
+</source>
+
+<filter **>
+  @type stdout
+</filter>

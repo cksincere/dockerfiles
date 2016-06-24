@@ -1,0 +1,5 @@
+[template]
+src = "fluentd.conf.tmpl"
+dest = "/fluentd/etc/fluentd.conf"
+keys = [
+]
