@@ -9,6 +9,7 @@ ENV TOMCAT_SHA1 a8a9f137be01c84908ba6b49820061c82d3d3e2e
 ENV TOMCAT_HOME /opt/tomcat
 
 RUN apk add --no-cache openjdk8
+RUN apk add --no-cache fontconfig
 
 # jvm fixes
 RUN curl -sSL https://s3.amazonaws.com/downloads.khipu.com/jvm/tzdata2016d/tzdb.dat -o /usr/lib/jvm/java-1.8-openjdk/jre/lib/tzdb.dat \
