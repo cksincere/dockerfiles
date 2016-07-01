@@ -1,0 +1,5 @@
+[template]
+src = "repmgr.conf.tmpl"
+dest = "/etc/repmgr/repmgr.conf"
+#keys = [
+#]
