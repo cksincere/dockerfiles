@@ -6,8 +6,8 @@ set -e
 : ${ETCD_PEERS:?"must be set"}
 : ${NODE_CLUSTER:?"must be set"}
 : ${NODE_ID:?"must be set"}
+: ${NODE_IP_ADDR:?"must be set"}
 : ${PGDATA:=/var/lib/postgres/data}
-: ${IFACE:=eth0}
 
 if [ -s "/etc/ssh/id_rsa_postgres" ] && [ -s "/etc/ssh/id_rsa_postgres.pub" ]; then
     cp /etc/ssh/id_rsa_postgres /var/lib/postgresql/.ssh/id_rsa
@@ -23,7 +23,6 @@ export ETCDCTL_PEERS=https://`echo $ETCD_PEERS | cut -d"," -f1`
 export ETCDCTL_CA_FILE=/etc/etcd/certs/ca.pem
 export ETCDCTL_KEY_FILE=/etc/etcd/certs/client-key.pem
 export ETCDCTL_CERT_FILE=/etc/etcd/certs/client.pem
-export IP_ADDR=`ip addr s $IFACE | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'`
 
 confd -log-level debug -onetime -backend env
 eval `etcdctl get /khipu/$KHIPU_ENV/pgbouncer/databases/$NODE_CLUSTER`

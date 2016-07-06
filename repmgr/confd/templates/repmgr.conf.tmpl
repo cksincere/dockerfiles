@@ -6,4 +6,4 @@ master_response_timeout=60
 reconnect_attempts=6
 reconnect_interval=10
 failover=automatic
-conninfo='host={{ getenv "IP_ADDR" }} port=5499 user=repmgr dbname=repmgr'
+conninfo='host={{ getenv "NODE_IP_ADDR" }} port=5499 user=repmgr dbname=repmgr'
