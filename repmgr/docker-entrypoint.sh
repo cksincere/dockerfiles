@@ -9,6 +9,16 @@ set -e
 : ${PGDATA:=/var/lib/postgres/data}
 : ${IFACE:=eth0}
 
+if [ -s "/etc/ssh/id_rsa_postgres" ] && [ -s "/etc/ssh/id_rsa_postgres.pub" ]; then
+    cp /etc/ssh/id_rsa_postgres /var/lib/postgresql/.ssh/id_rsa
+    cp /etc/ssh/id_rsa_postgres.pub /var/lib/postgresql/.ssh/id_rsa.pub
+    chown postgres:postgres /var/lib/postgresql/.ssh/*
+    chmod 0600 /var/lib/postgresql/.ssh/*
+else
+    echo "Postgres ssh key not found"
+    exit 1
+fi
+
 export ETCDCTL_PEERS=https://`echo $ETCD_PEERS | cut -d"," -f1`
 export ETCDCTL_CA_FILE=/etc/etcd/certs/ca.pem
 export ETCDCTL_KEY_FILE=/etc/etcd/certs/client-key.pem
