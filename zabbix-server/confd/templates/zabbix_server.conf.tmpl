@@ -161,7 +161,7 @@ DBPort={{getv "/zabbix/server/db/port"}}
 # Mandatory: no
 # Range: 0-1000
 # Default:
-# StartPingers=1
+StartPingers=5
 
 ### Option: StartDiscoverers
 #	Number of pre-forked instances of discoverers.
@@ -169,7 +169,7 @@ DBPort={{getv "/zabbix/server/db/port"}}
 # Mandatory: no
 # Range: 0-250
 # Default:
-# StartDiscoverers=1
+StartDiscoverers=5
 
 ### Option: StartHTTPPollers
 #	Number of pre-forked instances of HTTP pollers.
