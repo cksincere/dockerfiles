@@ -3,6 +3,7 @@
 set -e
 
 : ${PUBLIC_KEY_PATH:? "Must be set"}
+: ${PUBLIC_KEY_GPG:? "Must be set"}
 
 git clone git://github.com/robbyrussell/oh-my-zsh.git /tmp/oh-my-zsh
 
@@ -21,6 +22,9 @@ for f in $(find $PUBLIC_KEY_PATH -type f); do
 
   chown -R $user:$user /home/$user
   gpasswd -a $user sudo
+
+  sudo -u $user gpg2 --import $PUBLIC_KEY_GPG
+
 done
 
 exec $@
