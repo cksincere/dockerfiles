@@ -23,7 +23,7 @@ for f in $(find $PUBLIC_KEY_PATH -type f); do
   chown -R $user:$user /home/$user
   gpasswd -a $user sudo
 
-  sudo -u $user gpg2 --import $PUBLIC_KEY_GPG
+  sudo -H -u $user gpg2 --import $PUBLIC_KEY_GPG
 
 done
 
