@@ -7,7 +7,9 @@ set -e
 
 git clone git://github.com/robbyrussell/oh-my-zsh.git /tmp/oh-my-zsh
 
-git clone git://github.com/ansible/ansible.git /usr/local/src/ansible
+git clone --recursive git://github.com/ansible/ansible.git /usr/local/src/ansible
+
+chmod 777 /usr/local/src/ansible/lib
 
 for f in $(find $PUBLIC_KEY_PATH -type f); do 
 
