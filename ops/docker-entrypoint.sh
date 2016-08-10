@@ -11,6 +11,9 @@ fi
 
 if [ ! -d /usr/local/src/ansible ]
   git clone --recursive git://github.com/ansible/ansible.git /usr/local/src/ansible
+  cd /usr/local/src/ansible
+  git checkout 5f12731
+  cd /root
 fi
 
 for f in $(find $PUBLIC_KEY_PATH -type f); do 
