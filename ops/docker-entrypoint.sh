@@ -7,6 +7,8 @@ set -e
 
 git clone git://github.com/robbyrussell/oh-my-zsh.git /tmp/oh-my-zsh
 
+git clone git://github.com/ansible/ansible.git /usr/local/src/ansible
+
 for f in $(find $PUBLIC_KEY_PATH -type f); do 
 
   user=$(basename $f)
@@ -19,6 +21,7 @@ for f in $(find $PUBLIC_KEY_PATH -type f); do
 
   cp -R /tmp/oh-my-zsh /home/$user/.oh-my-zsh
   cp /home/$user/.oh-my-zsh/templates/zshrc.zsh-template /home/$user/.zshrc
+  echo "source /usr/local/src/ansible/hacking/env-setup" >> /home/$user/.zshrc
   echo "rm /home/$user/.gnupg/S.gpg-agent" > /home/$user/.zlogout
 
   chown -R $user:$user /home/$user
