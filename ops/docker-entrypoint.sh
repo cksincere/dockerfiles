@@ -19,7 +19,7 @@ for f in $(find $PUBLIC_KEY_PATH -type f); do
 
   cp -R /tmp/oh-my-zsh /home/$user/.oh-my-zsh
   cp /home/$user/.oh-my-zsh/templates/zshrc.zsh-template /home/$user/.zshrc
-  echo "rm .gnupg/S.gpg-agent" > /home/$user/.zlogout
+  echo "rm /home/$user/.gnupg/S.gpg-agent" > /home/$user/.zlogout
 
   chown -R $user:$user /home/$user
   gpasswd -a $user sudo
