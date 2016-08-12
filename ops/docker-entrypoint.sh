@@ -5,11 +5,11 @@ set -e
 : ${PUBLIC_KEY_PATH:? "Must be set"}
 : ${PUBLIC_KEY_GPG:? "Must be set"}
 
-if [ ! -d /tmp/oh-my-zsh ]
+if [ ! -d /tmp/oh-my-zsh ]; then
   git clone git://github.com/robbyrussell/oh-my-zsh.git /usr/local/src/oh-my-zsh
 fi
 
-if [ ! -d /usr/local/src/ansible ]
+if [ ! -d /usr/local/src/ansible ]; then
   git clone --recursive git://github.com/ansible/ansible.git /usr/local/src/ansible
   cd /usr/local/src/ansible
   git checkout 5f12731
@@ -20,7 +20,7 @@ for f in $(find $PUBLIC_KEY_PATH -type f); do
 
   user=$(basename $f)
 
-  if [ ! -d /home/$user ]
+  if [ ! -d /home/$user ]; then
     useradd -m $user -s /bin/zsh
 
     mkdir /home/$user/.ssh
