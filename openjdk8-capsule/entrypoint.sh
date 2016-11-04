@@ -3,6 +3,7 @@
 : ${KHIPU_ENV:?"must be set"}
 : ${ETCD_PEERS:?"must be set"}
 : ${KHIPU_HOME:?"must be set"}
+: ${ZABBIX_HOSTNAME:?"must be set"}
 
 if [ -n "$DOCKER_GID" ]; then
     if [ ! $(getent group docker) ]; then

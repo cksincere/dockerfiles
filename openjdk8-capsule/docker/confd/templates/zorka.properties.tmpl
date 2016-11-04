@@ -6,7 +6,7 @@ zabbix.active = {{getv "/zabbix/agent/active"}}
 zabbix.active.server.addr = {{getv "/zabbix/server/active"}}
 zabbix.active.host_metadata = {{getenv "PROJECT_NAME"}} {{getenv "PROJECT_VERSION"}} {{getv "/zabbix/agent/metadata"}}
 
-zorka.hostname = {{getenv "HOSTNAME"}}
+zorka.hostname = {{getenv "ZABBIX_HOSTNAME"}}
 zorka.mbs.autoregister = true
 tracer = no
 zorka.spy.compute.frames = yes
