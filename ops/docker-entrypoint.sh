@@ -9,13 +9,6 @@ if [ ! -d /tmp/oh-my-zsh ]; then
   git clone git://github.com/robbyrussell/oh-my-zsh.git /usr/local/src/oh-my-zsh
 fi
 
-if [ ! -d /usr/local/src/ansible ]; then
-  git clone --recursive git://github.com/ansible/ansible.git /usr/local/src/ansible
-  cd /usr/local/src/ansible
-  git checkout 5f12731
-  cd /root
-fi
-
 for f in $(find $PUBLIC_KEY_PATH -type f); do 
 
   user=$(basename $f)
@@ -31,9 +24,6 @@ for f in $(find $PUBLIC_KEY_PATH -type f); do
     cp -R /usr/local/src/oh-my-zsh /home/$user/.oh-my-zsh
     cp /home/$user/.oh-my-zsh/templates/zshrc.zsh-template /home/$user/.zshrc
 
-    cp -R /usr/local/src/ansible /home/$user/ansible
-
-    echo "source /home/$user/ansible/hacking/env-setup" >> /home/$user/.zshrc
     echo "rm /home/$user/.gnupg/S.gpg-agent" > /home/$user/.zlogout
 
     chown -R $user:$user /home/$user
