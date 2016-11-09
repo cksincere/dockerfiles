@@ -15,8 +15,12 @@ RUN echo "https://s3.amazonaws.com/alpine.khipu.com/3.4/main" >> /etc/apk/reposi
     && apk add --update curl bash gettext su-exec \
     && rm -rf /var/cache/apk/*
 
-RUN adduser -u ${ETCD_UID} -D -H etcd \
-    && adduser -u ${KHIPU_UID} -D -H khipu \
+RUN cp /usr/share/zoneinfo/America/Santiago /etc/localtime \
+    && echo "America/Santiago" > /etc/timezone \
+    && addgroup -g ${ETCD_GID} -S etcd \
+    && adduser -u ${ETCD_UID} -G etcd -S etcd \
+    && addgroup -g ${KHIPU_GID} -S khipu \
+    && adduser -u ${KHIPU_UID} -G khipu -S khipu \
     && adduser khipu etcd \
     && mkdir -p /opt/khipu \
     && cd /opt/khipu \
