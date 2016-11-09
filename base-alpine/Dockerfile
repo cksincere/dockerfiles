@@ -19,7 +19,8 @@ RUN cp /usr/share/zoneinfo/America/Santiago /etc/localtime \
     && addgroup -g ${ETCD_GID} -S etcd \
     && adduser -u ${ETCD_UID} -G etcd -S etcd \
     && addgroup -g ${KHIPU_GID} -S khipu \
-    && adduser -u ${KHIPU_UID} -G khipu -G etcd -S khipu \
+    && adduser -u ${KHIPU_UID} -G khipu -S khipu \
+    && adduser khipu etcd \
     && mkdir -p /opt/khipu \
     && cd /opt/khipu \
     && mkdir bin etc share log var \
