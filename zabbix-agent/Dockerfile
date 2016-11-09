@@ -1,11 +1,12 @@
-FROM khipu/base-alpine-s6
+FROM khipu/base-alpine-s6:edge
 MAINTAINER developers@khipu.com
 
-RUN addgroup -g 2000 -S zabbix \
-    && adduser -u 2000 -G zabbix -S zabbix \
-    && apk add --update zabbix-agent=3.0.5-r0 jq bash python socat curl wget openssl \
+RUN apk add --update zabbix-agent=3.0.5-r0 shadow jq bash python python-dev socat curl wget openssl openssl-dev musl-dev libffi-dev gcc py-pip \
+    && pip install pyopenssl \
     && rm -rf /var/cache/apk/* \
-    && mkdir /etc/zabbix/zabbix_agentd.conf.d
+    && mkdir /etc/zabbix/zabbix_agentd.conf.d \
+    && groupmod -g 2000 zabbix \
+    && usermod -u 2000 -g 2000 zabbix
 
 ADD confd /etc/confd
 
