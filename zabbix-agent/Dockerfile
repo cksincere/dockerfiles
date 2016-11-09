@@ -1,7 +1,7 @@
 FROM khipu/base-alpine-s6:edge
 MAINTAINER developers@khipu.com
 
-RUN apk add --update zabbix-agent=3.0.5-r0 shadow jq bash python python-dev socat curl wget openssl openssl-dev musl-dev libffi-dev gcc py-pip \
+RUN apk add --update zabbix-agent=3.2.1-r0 shadow jq bash python python-dev socat curl wget openssl openssl-dev musl-dev libffi-dev gcc py-pip \
     && pip install pyopenssl \
     && rm -rf /var/cache/apk/* \
     && mkdir /etc/zabbix/zabbix_agentd.conf.d \
