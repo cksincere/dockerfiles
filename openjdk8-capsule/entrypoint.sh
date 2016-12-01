@@ -16,10 +16,10 @@ CERTDIR=/etc/etcd/certs
 
 echo "Starting ${PROJECT_NAME} ${PROJECT_VERSION} env:${KHIPU_ENV} etcd:${ETCD_PEERS} prefix:${PROJECT_PREFIX}"
 
-PREFIX="${KHIPU_ENV}"
+PREFIX="/khipu/${KHIPU_ENV}/"
 
 if [ ! -z ${PROJECT_PREFIX+x} ]; then
-    PREFIX="${PREFIX}/${PROJECT_PREFIX}"
+    PREFIX="${PREFIX}${PROJECT_PREFIX}/"
 fi
 
 if [ ! -z ${DEBUG+x}  ]; then
@@ -33,9 +33,9 @@ done
 
 if [ -f ${CERTDIR}/client.pem ] && [ -f ${CERTDIR}/client-key.pem ] && [ -f ${CERTDIR}/ca.pem ]; then
     confd -onetime -backend etcd -node https://${ETCD_PEERS} -scheme https -client-cert $CERTDIR/client.pem \
-          -client-key $CERTDIR/client-key.pem  -prefix="/khipu/${PREFIX}/" -confdir ${KHIPU_HOME}/etc/confd || exit 1
+          -client-key $CERTDIR/client-key.pem  -prefix="${PREFIX}" -confdir ${KHIPU_HOME}/etc/confd || exit 1
 else
-    confd -onetime -backend etcd -node http://${ETCD_PEERS} -prefix="/khipu/${PREFIX}/" -confdir ${KHIPU_HOME}/etc/confd || exit 1
+    confd -onetime -backend etcd -node http://${ETCD_PEERS} -prefix="${PREFIX}" -confdir ${KHIPU_HOME}/etc/confd || exit 1
 fi
 
 cd ${KHIPU_HOME}
